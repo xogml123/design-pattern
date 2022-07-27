@@ -17,7 +17,7 @@ public class CarFactoryProducer {
         } else if (CarFactory.HYUNDAI.equals(name)) {
             return HyundaiCarFactory.getInstance();
         } else {
-            return null;
+            throw new IllegalStateException();
         }
     }
 

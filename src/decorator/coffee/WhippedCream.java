@@ -3,12 +3,13 @@ package decorator.coffee;
 public class WhippedCream extends CondimentDecorator {
 
     public WhippedCream(Coffee coffee) {
-        this.coffee = coffee;
+        super(coffee);
+
     }
 
     @Override
     public String getDescription() {
-        return coffee.description + " AddingWhipped Cream";
+        return coffee.getDescription() + " AddingWhipped Cream";
     }
 
 }

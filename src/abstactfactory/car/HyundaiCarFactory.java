@@ -21,7 +21,7 @@ public class HyundaiCarFactory extends CarFactory{
         } else if (name.equalsIgnoreCase(Car.GENESIS)) {
             car = new Genesis();
         } else {
-            car = new NoName();
+            throw new IllegalStateException();
         }
         return car;
     }
