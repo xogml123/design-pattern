@@ -1,4 +1,4 @@
-package strategy.dao.userinfo.web;
+package strategy.dao.userinfo;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -6,8 +6,10 @@ import java.util.Properties;
 import strategy.dao.userinfo.UserInfoDaoFactory;
 import strategy.dao.userinfo.domain.dao.UserInfoDao;
 import strategy.dao.userinfo.domain.entity.UserInfo;
+import strategy.dao.userinfo.web.UserInfoController;
 
 public class UserInfoClient {
+
     public static void main(String[] args) throws Exception{
         Properties prop = new Properties();
 
@@ -19,14 +21,17 @@ public class UserInfoClient {
         UserInfoDaoFactory userInfoDaoFactory = UserInfoDaoFactory.getInstance();
         UserInfoDao userInfoDao = userInfoDaoFactory.getUserInfoDao(dbtype);
 
+        UserInfoController userInfoController = new UserInfoController(userInfoDao);
         //UserInfo 객체 생성
         UserInfo userInfo1 = new UserInfo();
         userInfo1.setUserId("12345");
         userInfo1.setPasswd("passwd1");
         userInfo1.setUserName("userName1");
 
-        userInfoDao.insert(userInfo1);
-        userInfoDao.delete(userInfo1.getUserId());
-        userInfoDao.update(userInfo1);
+
+        userInfoController.requestInsert(userInfo1);
+        userInfoController.requestDelete(userInfo1.getUserId());
+        userInfoController.requestUpdate(userInfo1);
     }
+
 }

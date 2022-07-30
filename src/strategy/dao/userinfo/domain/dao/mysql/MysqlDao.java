@@ -5,7 +5,7 @@ import strategy.dao.userinfo.domain.entity.UserInfo;
 
 public class MysqlDao implements UserInfoDao {
 
-    private static final String DRIVER = "MSSQL DB";
+    private static final String DRIVER = "MYSQL DB";
     @Override
     public void insert(UserInfo userInfo) {
         System.out.println("insert into "
